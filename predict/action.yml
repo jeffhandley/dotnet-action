@@ -1,0 +1,16 @@
+name: 'Issue Labeler - Predictor'
+description: 'A GitHub Action issue labeler that predicts a label based on a machine-learning model trained against existing issues or pull requests.'
+
+branding:
+  icon: tag
+  color: purple
+
+inputs:
+  issue-numbers:
+    description: 'The issue numbers to predict labels for. A comma-separated list of numbers or number ranges.'
+  pull-numbers:
+    description: 'The pull request numbers to predict labels for. A comma-separated list of numbers or number ranges.'
+
+runs:
+  using: docker
+  image: docker://ghcr.io/jeffhandley/dotnet-action/predictor:main-20250418-1133

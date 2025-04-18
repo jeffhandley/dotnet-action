@@ -1,0 +1,19 @@
+name: 'Issue Labeler - Predict Issues'
+
+on:
+  workflow_dispatch:
+    inputs:
+      numbers:
+        required: true
+
+jobs:
+  predict:
+    name: 'Predict Labels'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 'Run Predictor'
+        uses: jeffhandley/dotnet-action/predict@main
+        id: run-predictor
+        with:
+          input-numbers: ${{ inputs.numbers }}
