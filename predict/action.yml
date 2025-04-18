@@ -13,4 +13,4 @@ inputs:
 
 runs:
   using: docker
-  image: docker://ghcr.io/jeffhandley/dotnet-action/predictor:main-20250418-1133
+  image: docker://ghcr.io/jeffhandley/dotnet-action/predictor:main-20250418-1353
