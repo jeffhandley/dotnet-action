@@ -6,10 +6,6 @@ branding:
   color: purple
 
 inputs:
-  version:
-    description: 'The Predictor app version to use; applied as the container image tag.'
-    required: true
-
   issue-numbers:
     description: 'The issue numbers to predict labels for. A comma-separated list of numbers or number ranges.'
   pull-numbers:
@@ -17,7 +13,7 @@ inputs:
 
 runs:
   using: docker
-  image: docker://ghcr.io/jeffhandley/dotnet-action/predictor:${{ inputs.version }}
+  image: docker://ghcr.io/jeffhandley/dotnet-action/predictor:main
   args:
     - ${{ inputs.issue-numbers && format('--issue-numbers "{0}"', inputs.issue-numbers) }}
     - ${{ inputs.pull-numbers && format('--pull-numbers "{0}"', inputs.pull-numbers) }}
