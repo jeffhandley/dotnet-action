@@ -10,8 +10,14 @@ using var provider = new ServiceCollection()
     .BuildServiceProvider();
 
 var core = provider.GetRequiredService<ICoreService>();
-var issueNumbers = core.GetInput("issue-numbers");
+var modelPath = core.GetInput("model_path");
+var issueNumbers = core.GetInput("issue_numbers");
 
 core.StartGroup("Inputs");
-core.WriteInfo($"issue-numbers: ${issueNumbers}");
+core.WriteInfo($"model_path: {modelPath}");
+core.WriteInfo($"issue_numbers: {issueNumbers}");
+core.EndGroup();
+
+core.StartGroup("Model");
+core.WriteInfo($"Exists: {System.IO.File.Exists(modelPath)}");
 core.EndGroup();

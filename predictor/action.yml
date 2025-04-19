@@ -6,10 +6,11 @@ branding:
   color: purple
 
 inputs:
-  issue-numbers:
+  model_path:
+    description: 'The path to the prediction model file, typically restored using actions/cache/restore.'
+    required: true
+  issue_numbers:
     description: 'The issue numbers to predict labels for. A comma-separated list of numbers or number ranges.'
-  pull-numbers:
-    description: 'The pull request numbers to predict labels for. A comma-separated list of numbers or number ranges.'
 
 runs:
   using: docker

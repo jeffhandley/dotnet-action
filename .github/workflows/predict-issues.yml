@@ -12,8 +12,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: 'Restore model from cache'
+        run: |
+          echo "Test Model" > issue-model.txt
+
       - name: 'Run Predictor'
         uses: jeffhandley/dotnet-action/predictor@main
         id: run-predictor
         with:
-          issue-numbers: ${{ inputs.numbers }}
+          model_path: issue-model.txt
+          issue_numbers: ${{ inputs.numbers }}
