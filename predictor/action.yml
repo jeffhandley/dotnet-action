@@ -1,4 +1,4 @@
-name: 'Issue Labeler - Predictor'
+name: 'IssueLabeler - Predictor'
 description: 'A GitHub Action issue labeler that predicts a label based on a machine-learning model trained against existing issues or pull requests.'
 
 branding:
@@ -6,6 +6,10 @@ branding:
   color: purple
 
 inputs:
+  version:
+    description: 'The Predictor app version to use; applied as the container image tag.'
+    required: true
+
   issue-numbers:
     description: 'The issue numbers to predict labels for. A comma-separated list of numbers or number ranges.'
   pull-numbers:
@@ -13,4 +17,7 @@ inputs:
 
 runs:
   using: docker
-  image: docker://ghcr.io/jeffhandley/dotnet-action/predictor:main-20250418-1353
+  image: docker://ghcr.io/jeffhandley/dotnet-action/predictor:${{ inputs.version }}
+  args:
+    - ${{ inputs.issue-numbers && format('--issue-numbers "{0}"', inputs.issue-numbers) }}
+    - ${{ inputs.pull-numbers && format('--pull-numbers "{0}"', inputs.pull-numbers) }}

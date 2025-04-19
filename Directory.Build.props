@@ -1,0 +1,31 @@
+<Project>
+  <!-- Build properties -->
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+
+    <UseArtifactsOutput>true</UseArtifactsOutput>
+    <ArtifactsPath>$(MSBuildThisFileDirectory)artifacts</ArtifactsPath>
+    <IsAotCompatible>true</IsAotCompatible>
+  </PropertyGroup>
+
+  <!-- Assembly and package properties -->
+  <PropertyGroup>
+    <Authors>Microsoft</Authors>
+    <Copyright>© .NET Foundation and Contributors</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/dotnet/issue-labeler</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
+  <!-- Container properties -->
+  <PropertyGroup>
+    <ContainerUser>root</ContainerUser>
+    <ContainerAuthors>Microsoft</ContainerAuthors>
+    <ContainerInformationUrl>https://github.com/dotnet/issue-labeler</ContainerInformationUrl>
+    <ContainerDocumentationUrl>https://github.com/dotnet/issue-labeler/wiki</ContainerDocumentationUrl>
+    <ContainerLicenseExpression>https://github.com/dotnet/issue-labeler/blob/main/LICENSE.TXT</ContainerLicenseExpression>
+  </PropertyGroup>
+</Project>

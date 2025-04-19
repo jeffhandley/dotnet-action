@@ -3,7 +3,7 @@ name: Release
 on:
   workflow_dispatch:
     inputs:
-      version:
+      image-tags:
         required: true
 
   release:
@@ -24,18 +24,18 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.22
 
-      - name: Get the version from the release
+      - name: Get the image tags from the release tag
         if: github.event_name == 'release'
-        run: echo "RELEASE_VERSION=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
+        run: echo "IMAGE_TAGS=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
 
-      - name: Get the version from the workflow inputs
+      - name: Get the image tags from the workflow input
         if: github.event_name == 'workflow_dispatch'
-        run: echo "RELEASE_VERSION=${{ inputs.version }}" >> $GITHUB_ENV
+        run: echo "IMAGE_TAGS=${{ inputs.image-tags }}" >> $GITHUB_ENV
 
       - name: Set up the .NET SDK
         uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4.3.1
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: 9.0.x
 
       - name: Log in to the GitHub Container Registry
         uses: docker/login-action@74a5d142397b4f367a81961eba4e8cd7edddf772 # v3.4.0
@@ -45,14 +45,14 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish Predictor App
-        working-directory: ./src/IssueLabeler.Predictor
+        working-directory: ./predictor/src
         run: |
           dotnet publish \
             /t:PublishContainer \
             -p DebugType=none \
             -p ContainerBaseImage=${{ env.BASE_IMAGE }} \
             -p ContainerRegistry=ghcr.io \
-            -p ContainerImageTags='"${{ env.RELEASE_VERSION }}"' \
+            -p ContainerImageTags='"${{ env.IMAGE_TAGS }}"' \
             -p ContainerRepository=${{ env.PREDICTOR_IMAGE_NAME }} \
             -bl
 
@@ -61,4 +61,4 @@ jobs:
         if: always()
         with:
           name: msbuild.binlog
-          path: ./src/IssueLabeler.Predictor/msbuild.binlog
+          path: ./predictor/src/msbuild.binlog

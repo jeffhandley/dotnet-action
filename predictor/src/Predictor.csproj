@@ -2,10 +2,6 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <JsonSerializerIsReflectionEnabledByDefault>false</JsonSerializerIsReflectionEnabledByDefault>
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
   </PropertyGroup>
@@ -18,12 +14,10 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <ContainerUser>root</ContainerUser>
     <ContainerDescription>dotnet/issue-labeler: Predictor - Predict labels for GitHub issues and pull requests</ContainerDescription>
-    <ContainerAuthors>dotnet</ContainerAuthors>
-    <ContainerInformationUrl>https://github.com/dotnet/issue-labeler</ContainerInformationUrl>
-    <ContainerDocumentationUrl>https://github.com/dotnet/issue-labeler/wiki</ContainerDocumentationUrl>
-    <ContainerLicenseExpression>https://github.com/dotnet/issue-labeler/blob/main/LICENSE.TXT</ContainerLicenseExpression>
   </PropertyGroup>
+
+  <ItemGroup>
+  </ItemGroup>
 
 </Project>
