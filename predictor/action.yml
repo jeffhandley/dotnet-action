@@ -14,6 +14,3 @@ inputs:
 runs:
   using: docker
   image: docker://ghcr.io/jeffhandley/dotnet-action/predictor:main
-  args:
-    - ${{ inputs.issue-numbers && format('--issue-numbers "{0}"', inputs.issue-numbers) }}
-    - ${{ inputs.pull-numbers && format('--pull-numbers "{0}"', inputs.pull-numbers) }}

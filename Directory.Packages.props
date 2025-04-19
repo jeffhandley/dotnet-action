@@ -4,5 +4,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="9.0.4" />
+    <PackageVersion Include="GitHub.Actions.Core" Version="9.0.0" />
   </ItemGroup>
 </Project>

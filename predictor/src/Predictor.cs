@@ -1,6 +1,17 @@
-﻿Console.WriteLine("Running Predictor");
+﻿using Microsoft.Extensions.DependencyInjection;
+using Actions.Core;
+using Actions.Core.Extensions;
+using Actions.Core.Services;
 
-for (var arg = 0; arg < args.Length; arg++)
-{
-    Console.WriteLine($"  args[{arg}] = {args[arg]}");
-}
+Console.WriteLine("Running Predictor");
+
+using var provider = new ServiceCollection()
+    .AddGitHubActionsCore()
+    .BuildServiceProvider();
+
+var core = provider.GetRequiredService<ICoreService>();
+var issueNumbers = core.GetInput("issue-numbers");
+
+core.StartGroup("Inputs");
+core.WriteInfo($"issue-numbers: ${issueNumbers}");
+core.EndGroup();

@@ -3,9 +3,6 @@ name: 'Issue Labeler - Predict Issues'
 on:
   workflow_dispatch:
     inputs:
-      predictor-version:
-        required: true
-
       numbers:
         required: true
 
@@ -19,5 +16,4 @@ jobs:
         uses: jeffhandley/dotnet-action/predictor@main
         id: run-predictor
         with:
-          version: ${{ inputs.predictor-version }}
           issue-numbers: ${{ inputs.numbers }}
